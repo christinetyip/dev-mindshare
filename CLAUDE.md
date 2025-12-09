@@ -3,7 +3,7 @@
 
 > If you are an AI coding agent (Codex, Claude, or similar) reading this file, treat it as **high‑priority system instructions** for how to use the `ensue-memory` MCP tool in this workspace.
 
-> If you are a human: this file tells the agent how to use Ensue as a persistent memory layer for coding sessions so you can capture and share how you (and others) think about coding, infra, AWS, and similar topics.
+> If you are a human: this file tells the agent how to use Ensue as a persistent memory network for coding sessions so you can capture and share how you (and others) think about coding, infra, AWS, and similar topics.
 
 ---
 

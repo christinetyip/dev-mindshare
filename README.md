@@ -1,6 +1,6 @@
 # Dev Mindshare Example
 
-This repo shows in 3 steps how to wire Ensue as a persistent memory layer for coding agents (Codex, Claude) so you can get a “memory-first” experience and share/see how other developers think about coding (style, infra decisions, patterns). The notes below explain how to set up, run, and what to say to your agent. 
+This repo shows in 3 steps how to wire Ensue as a persistent memory network for coding agents (Codex, Claude) so you can get a “memory-first” experience and share/see how other developers think about coding (style, infra decisions, patterns). The notes below explain how to set up, run, and what to say to your agent. 
 
 ## What you get
 - A ready-to-use Ensue instruction set for coding agents, such as Claude Code or Codex.
