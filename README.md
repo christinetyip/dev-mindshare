@@ -11,32 +11,45 @@ This repo shows in 3 steps how to wire Ensue as a persistent memory network for 
 
 ## Getting Started
 
-### Step 1: Install the Ensue MCP tool
+### Step 1: Set the API Key and Add the MCP Server
+
+Set the API key:
+
+```bash
+export ENSUE_API_KEY="lmn_695bff5b5b6d4bfe82ffaf2ee9c1167c"
+```
+
+Then add the Ensue MCP server:
+
 Claude:
 ```bash
 claude mcp add --transport http ensue-memory \
   https://www.ensue-network.ai/api/ \
-  --header "Authorization: Bearer lmn_695bff5b5b6d4bfe82ffaf2ee9c1167c"
+  --header "Authorization: Bearer $ENSUE_API_KEY"
 ```
 
 Codex:
 ```bash
 codex mcp add ensue-memory \
   --url https://www.ensue-network.ai/api/ \
-  --bearer-token-env-var lmn_695bff5b5b6d4bfe82ffaf2ee9c1167c
+  --bearer-token-env-var ENSUE_API_KEY
 ```
 
-### Step 2: Download instructions
+### Step 2: Download instructions and start Claude/Codex
 - Claude users: download `CLAUDE.md` into your project directory before starting Claude.
 - Codex users: download `AGENTS.md` into your project directory before starting Codex.
-
-### Step 3: Start Claude / Codex
 - Open the project in your agent and start; the file is auto-loaded as high-priority instructions.
+
+### Step 3: Start coding
+
 - Ask Claude or Codex:  
-  “Hey, load any Ensue memories for this project and give me a one-line status on what you already know. Then let’s start by <task>.” and start coding.
-- After a few prompts/some time, ask Claude or Codex the following to verify it's working:
+```bash
+Hey, load any Ensue memories for this project and give me a one-line status on what you already know.
+```
+
+- After a few prompts after you've started coding, ask Claude or Codex the following to verify it's working:
   - “What did you save to Ensue for this project? Any general takeaways or feedback for me?”
-  - "Based on the memories on Ensue, how are others thinking about <task>?"
+  - "Based on the memories on Ensue, how are others thinking about [infra and aws deployments]?"
 
 ## What the agent will do (per `dev-mindshare.md`)
 - On session start: load relevant memories (coding style, preferences, mistakes, architecture, todo, tools, experiments).
