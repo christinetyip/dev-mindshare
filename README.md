@@ -72,5 +72,6 @@ Hey, load any Ensue memories for this project and give me a one-line status on w
 - If you’re collaborating, decide whether project-level memories should live under `coworkers/` (shared) or stay `personal/` (private).
 
 ## Next steps / advanced
-- Get your own `ENSUE_API_KEY` and swap it into the install commands. The included demo key has restricted permissions; your own key lets you update keys, create private-only memories (e.g., personal front-end preferences), and control visibility per prefix. DM me (https://x.com/christinetyip) or submit this form (https://forms.gle/d4Cg5LEP9scs6XJE6) to get your own personal key. I'll probably try to automate this process later, but for now, you can expect a response within 24 hours.
+- Get your own `ENSUE_API_KEY` and swap it into the install commands. The included demo key has restricted permissions; your own key lets you update keys, create private-only memories (e.g., personal front-end preferences), and control visibility per prefix.
+DM me (https://x.com/christinetyip) or submit this form (https://forms.gle/d4Cg5LEP9scs6XJE6) to get your own personal key. I'll probably try to automate this process later, but for now, you can expect a response within 24 hours.
 - Package the core flow as a Skill in Claude or Codex if you want a reusable toggle you can carry across repos or share with teammates. Use it to quickly enable/disable Ensue behaviors without renaming files.
