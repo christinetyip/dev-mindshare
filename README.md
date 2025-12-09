@@ -4,7 +4,6 @@ This repo shows in 3 steps how to wire Ensue as a persistent memory network for 
 
 ## What you get
 - A ready-to-use Ensue instruction set for coding agents, such as Claude Code or Codex.
-- A default download-and-drop flow (CLAUDE.md for Claude, AGENTS.md for Codex), plus doc-first and skill-based options.
 - Starter prompts so first-time users know what to say.
 
 ## Prerequisites
