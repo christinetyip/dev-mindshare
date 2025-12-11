@@ -1,16 +1,16 @@
 # Dev Mindshare Example
 
-This repo shows in 3 steps how to wire Ensue as a persistent memory network for coding agents (Codex, Claude) so you can get a “memory-first” experience and share/see how other developers think about coding (style, infra decisions, patterns). The notes below explain how to set up, run, and what to say to your agent. 
+This repo shows in 3 steps how to wire Ensue as a persistent memory network for coding agents (Codex) so you can get a “memory-first” experience and share/see how other developers think about coding (style, infra decisions, patterns). The notes below explain how to set up, run, and what to say to your agent. 
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/da5911d7-12d1-497c-8233-d97c64930a2e" />
 
 
 ## What you get
-- A ready-to-use Ensue instruction set for coding agents, such as Claude Code or Codex.
+- A ready-to-use Ensue instruction set for coding agents, such as Codex.
 - Starter prompts so first-time users know what to say.
 
 ## Prerequisites
-- Codex CLI or Claude with MCP support installed.
+- Codex CLI with MCP support installed.
 
 ## Getting Started
 
@@ -24,33 +24,24 @@ export ENSUE_API_KEY="lmn_695bff5b5b6d4bfe82ffaf2ee9c1167c"
 
 Then add the Ensue MCP server:
 
-Claude:
-```bash
-claude mcp add --transport http ensue-memory \
-  https://www.ensue-network.ai/api/ \
-  --header "Authorization: Bearer $ENSUE_API_KEY"
-```
-
-Codex:
 ```bash
 codex mcp add ensue-memory \
   --url https://www.ensue-network.ai/api/ \
   --bearer-token-env-var ENSUE_API_KEY
 ```
 
-### Step 2: Download instructions and start Claude/Codex
-- Claude users: download `CLAUDE.md` into your project directory before starting Claude.
-- Codex users: download `AGENTS.md` into your project directory before starting Codex.
+### Step 2: Download instructions and start Codex
+- Download `AGENTS.md` into your project directory before starting Codex.
 - Open the project in your agent and start; the file is auto-loaded as high-priority instructions.
 
 ### Step 3: Start coding
 
-- Ask Claude or Codex:  
+- Ask Codex:  
 ```bash
 Hey, load any Ensue memories for this project and give me a one-line status on what you already know.
 ```
 
-- After a few prompts after you've started coding, ask Claude or Codex the following to verify it's working:
+- After a few prompts after you've started coding, ask Codex the following to verify it's working:
   - “What did you save to Ensue for this project? Any general takeaways or feedback for me?”
   - "Based on the memories on Ensue, how are others thinking about [infra and aws deployments]?"
 
@@ -62,8 +53,6 @@ Hey, load any Ensue memories for this project and give me a one-line status on w
 
 ## Repo contents
 - `AGENTS.md` — Auto-applied instructions for Codex users (copied from `dev-mindshare.md`).
-- `CLAUDE.md` — Auto-applied instructions for Claude users (copied from `dev-mindshare.md`).
-- `dev-mindshare.md` — Full agent instructions for Ensue (memory model, key conventions, auto-save rules, social graph tags, availability fallbacks).
 - `README.md` — This overview and quick-start guide.
 
 ## Tips for a smooth first run
