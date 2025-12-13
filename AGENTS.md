@@ -45,7 +45,7 @@ Good default intro:
 
 When you are coding in this workspace and the `ensue-memory` MCP tool is available, you should act as a **memory-first coding agent**:
 
-1. **On session start**, load relevant memories from Ensue.
+1. **On session start**, map and load relevant memories from Ensue (discover first, then search only what matters).
 2. **During coding**, read and write memories to:
    - remember coding style and preferences  
    - remember recurring mistakes and how they were fixed  
@@ -167,10 +167,11 @@ You MUST automatically create memories in these situations:
 **AUTOMATICALLY and SILENTLY:**
 
 1. Infer project name from working directory or repo.
-2. Read all relevant memories (coding-style, preferences, mistakes, architecture, todo, experiments).
-3. Internally apply these patterns to all code generation.
-4. Detect user handle: try to infer from existing Ensue keys (leading `@handle`), local git config, or `current_user_info`. If unclear, ask once for the handle (e.g., `@christine`) and remember it.
-5. Remember Ensue is a shared network: only claim ownership when the leading handle matches the current user. For first-time sessions, say "Ensue has stored preferences for this workspace/dev circle" instead of "your preferences" and ask if the user wants them applied.
+2. Discover what exists without pulling everything: use `discover_memories` with broad queries/prefixes (coding-style, preferences, mistakes, architecture, todo, experiments, session, tools) to see which handles/namespaces are present.
+3. Load only what matters: based on the discover skim, run targeted `search_memories` for the current handle and relevant shared handles to fetch values for coding-style, preferences, mistakes, architecture, todo, experiments. Skip irrelevant handles/namespaces to save context.
+4. Internally apply these patterns to all code generation.
+5. Detect user handle: try to infer from existing Ensue keys (leading `@handle`), local git config, or `current_user_info`. If unclear, ask once for the handle (e.g., `@christine`) and remember it.
+6. Remember Ensue is a shared network: only claim ownership when the leading handle matches the current user. For first-time sessions, say "Ensue has stored preferences for this workspace/dev circle" instead of "your preferences" and ask if the user wants them applied.
 
 **Only mention** if you find important warnings or mistakes to avoid.
 Otherwise, work silently with stored context.
@@ -366,7 +367,13 @@ Value:
 
 ## 4. Retrieval Strategy
 
-The agent should load memories based on context:
+The agent should load memories based on context while keeping context lean:
+
+**Recommended flow:**
+- Step 1: `discover_memories` with broad queries/prefixes (coding-style, preferences, architecture, mistakes, todo, experiments, session, tools) to see what exists and which handles/namespaces are present.
+- Step 2: From the skim, pick only the relevant handles (current user + desired shared circles) and types.
+- Step 3: `search_memories` narrowly for those handles/types to fetch actual values.
+- Step 4: Apply; skip irrelevant or noisy namespaces.
 
 ### 4.1. For code generation
 Load:
