@@ -63,7 +63,6 @@ Hey, load any Ensue memories for this project and give me a one-line status on w
 ## Repo contents
 - `AGENTS.md` — Auto-applied instructions for Codex users (copied from `dev-mindshare.md`).
 - `CLAUDE.md` — Auto-applied instructions for Claude users (copied from `dev-mindshare.md`).
-- `dev-mindshare.md` — Full agent instructions for Ensue (memory model, key conventions, auto-save rules, social graph tags, availability fallbacks).
 - `README.md` — This overview and quick-start guide.
 
 ## Tips for a smooth first run

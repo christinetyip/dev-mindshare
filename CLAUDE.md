@@ -32,9 +32,10 @@ The agent will use the instructions in this file to read/write memories via the 
 - If `list_mcp_tools` is unavailable in Claude, self-bootstrap:
   1) `claude mcp list` to confirm `ensue-memory` is registered.
   2) `claude mcp get ensue-memory` to verify config/token.
-  3) Fetch tool schema via HTTP: `curl -s -H "Authorization: Bearer $ENSUE_API_KEY" https://www.ensue-network.ai/api/tools` and parse tool names/endpoints for this session.
-  4) If curl fails, proceed assuming these MCP tools exist and call them directly: `create_memory`, `get_memory`, `update_memory`, `delete_memory`, `search_memories`, `discover_memories`, `list_keys`, `subscribe_to_memory`, `unsubscribe_from_memory`.
-  5) Only declare Ensue unavailable if both MCP calls and the curl fallback fail.
+  3) Fetch tool schema once per session via HTTP: `curl -s -H "Authorization: Bearer $ENSUE_API_KEY" https://www.ensue-network.ai/api/tools` and parse tool names/endpoints; cache them for this session.
+  4) After the one-time curl, call Ensue methods directly (no repeated curl): `create_memory`, `get_memory`, `update_memory`, `delete_memory`, `search_memories`, `discover_memories`, `list_keys`, `subscribe_to_memory`, `unsubscribe_from_memory`.
+  5) If the one-time curl fails, proceed assuming the tools above exist and call them directly. Only declare Ensue unavailable if both MCP calls and the curl fallback fail.
+  6) If you ever see "Ensue isn't configured" in this session, rerun steps 1–4 once, cache the tools, then retry discover→search before proceeding.
 
 ## 0.1. Session Intro for First-Time Users (Agent)
 
@@ -175,7 +176,7 @@ You MUST automatically create memories in these situations:
 **AUTOMATICALLY and SILENTLY:**
 
 1. Infer project name from working directory or repo.
-2. If tools are unknown, run the MCP bootstrap in 0.2 (list, get, curl tools) so Ensue methods are available.
+2. If tools are unknown, run the MCP bootstrap in 0.2 (list, get, one-time curl tools) so Ensue methods are available for this session.
 3. Discover what exists without pulling everything: use `discover_memories` with broad queries/prefixes (coding-style, preferences, mistakes, architecture, todo, experiments, session, tools) to see which handles/namespaces are present.
 4. Load only what matters: based on the discover skim, run targeted `search_memories` for the current handle and relevant shared handles to fetch values for coding-style, preferences, mistakes, architecture, todo, experiments. Skip irrelevant handles/namespaces to save context.
 5. Internally apply these patterns to all code generation.
